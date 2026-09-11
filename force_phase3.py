@@ -352,7 +352,7 @@ def train_and_test_phase3(seed=42, n_neurons=1000,
     vt = VocalTract(n_params=8, resistance=0.5, seed=seed+200)
 
     # Generate targets
-    targets = [generate_target_trajectory(s, max(train_steps, 500) + test_steps) for s in range(3)]
+    targets = [generate_target_trajectory(s, 1000) for s in range(3)]
 
     # ============================================================
     #  Training: 3 rounds x 3 shapes (sequential blocks)

@@ -34,7 +34,7 @@ We make the following contributions:
 
 The network consists of a fixed recurrent reservoir and a plastic readout layer.
 
-**Recurrent Reservoir.** N = 1000 LIF (Leaky Integrate-and-Fire) neurons with 10% random recurrent connectivity. Weights are drawn from a Gaussian distribution scaled by g / √(p·N) where g = 5.0 and p = 0.1, yielding an initial spectral radius of approximately 1.5. **The recurrent weights remain fixed throughout all training and testing; only readout layer weights (W_out) are plastic.**
+**Recurrent Reservoir.** N = 1000 LIF (Leaky Integrate-and-Fire) neurons with 10% random recurrent connectivity. Weights are drawn from a Gaussian distribution scaled by g / √(p·N) where g = 5.0 and p = 0.1, yielding an initial spectral radius of approximately 5.0. **The recurrent weights remain fixed throughout all training and testing; only readout layer weights (W_out) are plastic.**
 
 The reservoir receives visual input encoding geometric shapes (square, circle, triangle) as spatial spike patterns on a 20×10 = 200 neuron grid, using rate coding.
 
@@ -199,6 +199,17 @@ Performance improves from 100 to 1000 neurons, then degrades sharply at larger s
 | Square | Circle + Triangle | 0.763 |
 
 The network generalizes to unseen shapes (0.763–0.821 correlation), indicating that STDP learns to extract visual features and map them to motor parameters rather than simply memorizing specific shape-trajectory pairs.
+
+**Position and Size Generalization (Phase 16):** Training with fixed-shape stimuli and testing with position-shifted and size-scaled variants (10 seeds):
+
+| Test type | Correlation | Success rate (>0.2) |
+|---|---|---|
+| Trained (fixed) | 0.863 ± 0.046 | 30/30 |
+| Position shift | 0.794 ± 0.087 | 30/30 |
+| Size scaling | 0.549 ± 0.245 | 27/30 |
+| Rate variation | 0.283 ± 0.239 | 18/30 |
+
+The network is robust to position shifts and shows partial scale invariance, suggesting emergent shape abstraction rather than pixel-level memorization.
 
 ### 4.6 Parameter Sensitivity
 
