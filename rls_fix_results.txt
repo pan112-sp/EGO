@@ -1,0 +1,90 @@
+RLS + Ridge Baseline Experiment
+============================================================
+scipy: available
+
+============================================================
+  BASELINE COMPARISON: Ridge (offline) + RLS (online)
+============================================================
+
+Part A: Offline Ridge Regression (theoretical upper bound)
+  - Answers: can a linear readout solve this task at all?
+  - Uses full training data, no online constraint
+
+Part B: Online RLS / FORCE (stabilized)
+  - Answers: can online RLS converge on spiking reservoir?
+
+--- Part A: Offline Ridge Regression ---
+  tau_psp = 20 ms:
+    seed  0:   0.868  (best alpha=0.01)
+    seed  1:   0.857  (best alpha=0.01)
+    seed  2:   0.869  (best alpha=0.01)
+    seed  3:   0.879  (best alpha=0.01)
+    seed  4:   0.884  (best alpha=0.01)
+    seed  5:   0.874  (best alpha=0.01)
+    seed  6:   0.868  (best alpha=0.01)
+    seed  7:   0.876  (best alpha=0.01)
+    seed  8:   0.867  (best alpha=0.01)
+    seed  9:   0.893  (best alpha=0.01)
+    >>> tau= 20ms: 0.873 +/- 0.010  (141s)
+
+  tau_psp = 50 ms:
+    seed  0:   0.836  (best alpha=0.01)
+    seed  1:   0.824  (best alpha=0.01)
+    seed  2:   0.843  (best alpha=0.01)
+    seed  3:   0.853  (best alpha=0.01)
+    seed  4:   0.873  (best alpha=0.01)
+    seed  5:   0.853  (best alpha=0.01)
+    seed  6:   0.861  (best alpha=0.01)
+    seed  7:   0.859  (best alpha=0.01)
+    seed  8:   0.857  (best alpha=0.01)
+    seed  9:   0.890  (best alpha=0.01)
+    >>> tau= 50ms: 0.855 +/- 0.017  (146s)
+
+  tau_psp = 100 ms:
+    seed  0:   0.791  (best alpha=0.01)
+    seed  1:   0.792  (best alpha=0.01)
+    seed  2:   0.811  (best alpha=0.01)
+    seed  3:   0.832  (best alpha=0.01)
+    seed  4:   0.854  (best alpha=0.01)
+    seed  5:   0.830  (best alpha=0.01)
+    seed  6:   0.851  (best alpha=0.01)
+    seed  7:   0.823  (best alpha=0.01)
+    seed  8:   0.834  (best alpha=0.01)
+    seed  9:   0.878  (best alpha=0.01)
+    >>> tau=100ms: 0.830 +/- 0.026  (154s)
+
+  tau_psp = 200 ms:
+    seed  0:   0.747  (best alpha=0.01)
+    seed  1:   0.750  (best alpha=0.01)
+    seed  2:   0.771  (best alpha=0.01)
+    seed  3:   0.805  (best alpha=0.01)
+    seed  4:   0.827  (best alpha=0.01)
+    seed  5:   0.789  (best alpha=0.01)
+    seed  6:   0.834  (best alpha=0.01)
+    seed  7:   0.779  (best alpha=0.01)
+    seed  8:   0.774  (best alpha=0.01)
+    seed  9:   0.849  (best alpha=0.01)
+    >>> tau=200ms: 0.792 +/- 0.033  (142s)
+
+--- Part B: Online RLS (stabilized) ---
+  tau_psp = 20 ms:
+    seed  0:   0.885
+    seed  1:   0.862
+    seed  2:   0.863
+    seed  3:   0.868
+    seed  4:   0.885
+    seed  5:   0.870
+    seed  6:   0.890
+    seed  7:   0.874
+    seed  8:   0.883
+    seed  9:   0.870
+    >>> tau= 20ms: 0.875 +/- 0.009  (2577s)
+
+  tau_psp = 50 ms:
+    seed  0:   0.873
+    seed  1:   0.841
+    seed  2:   0.842
+    seed  3:   0.846
+  seed  4:   0.882
+    seed  5:   0.840
+    seed  6:   0.875
