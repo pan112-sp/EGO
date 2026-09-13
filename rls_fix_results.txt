@@ -85,6 +85,15 @@ Part B: Online RLS / FORCE (stabilized)
     seed  1:   0.841
     seed  2:   0.842
     seed  3:   0.846
-  seed  4:   0.882
+    seed  4:   0.882
     seed  5:   0.840
     seed  6:   0.875
+    seed  7:   0.862
+    seed  8:   0.865
+    seed  9:   0.847
+    >>> tau= 50ms: 0.857 +/- 0.015  (1896s)
+
+  tau_psp = 100 ms:
+  seed  0:   0.850
+    seed  1:   0.811
+    seed  2:   0.818
