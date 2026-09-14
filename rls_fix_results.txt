@@ -101,9 +101,47 @@ Part B: Online RLS / FORCE (stabilized)
     seed  4:   0.862
     seed  5:   0.799
     seed  6:   0.849
-  seed  7:   0.828
+    seed  7:   0.828
     seed  8:   0.833
     seed  9:   0.819
-    >>> tau=100ms: 0.829 +/- 0.019  (1964s)
+    >>> tau=100ms: 0.829 +/- 0.019  (2056s)
 
   tau_psp = 200 ms:
+    seed  0:   0.802
+    seed  1:   0.781
+    seed  2:   0.783
+    seed  3:   0.778
+    seed  4:   0.820
+    seed  5:   0.756
+    seed  6:   0.808
+    seed  7:   0.771
+    seed  8:   0.780
+    seed  9:   0.758
+    >>> tau=200ms: 0.784 +/- 0.020  (1835s)
+
+============================================================
+  FINAL SUMMARY
+  Total time: 8946s (149.1 min)
+============================================================
+
+  [A] Offline Ridge Regression (theoretical upper bound):
+    tau= 20ms: 0.873 +/- 0.010
+    tau= 50ms: 0.855 +/- 0.017
+    tau=100ms: 0.830 +/- 0.026
+    tau=200ms: 0.792 +/- 0.033
+
+  [B] Online RLS / FORCE (stabilized):
+    tau= 20ms: 0.875 +/- 0.009
+    tau= 50ms: 0.857 +/- 0.015
+    tau=100ms: 0.829 +/- 0.019
+    tau=200ms: 0.784 +/- 0.020
+
+  Reference: STDP + physical guidance (membrane) = 0.865 +/- 0.022
+
+  Comparison with STDP (best tau per method):
+    Ridge (offline) (tau=20ms): 0.873, t=-1.10, p=2.88e-01, d=-0.52
+    RLS (online) (tau=20ms): 0.875, t=-1.30, p=2.09e-01, d=-0.61
+
+  === EXPERIMENT COMPLETE ===
+
+=== SCRIPT ENDED ===

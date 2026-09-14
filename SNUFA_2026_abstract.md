@@ -1,14 +1,14 @@
-# SNUFA 2026 Abstract (corrected)
+# SNUFA 2026 Abstract
 
-**提交字段**
+**Presentation type:** Poster
 
-- Presentation type: Poster
-- Presentation title: `When a correlation metric cannot tell learning from non-learning in a spiking sensorimotor network`
-- Presentation authors: `Pan Haimeng`
+**Presentation title:** When a correlation metric cannot tell learning from non-learning in a spiking sensorimotor network
+
+**Presentation authors:** Pan Haimeng
 
 ---
 
-## Abstract (English — 粘这一份进表单)
+## Abstract
 
 We report a negative result together with a methodological caution. We trained a spiking
 network — a fixed reservoir of 1000 LIF neurons with a plastic STDP readout — to map visual
@@ -36,9 +36,11 @@ still short of ridge.
 
 We recommend rank-based or confusion-matrix measures whenever targets are mutually correlated.
 
+*(261 words)*
+
 ---
 
-## 中文对照（给你核对用，不要粘进表单）
+## 中文对照
 
 我们报告一个负面结果，以及一则方法学上的提醒。我们训练了一个脉冲网络——1000 个 LIF 神经元的
 固定储备池，加上一个可塑的 STDP 读出层——把视觉形状映射到声带运动轨迹。在项目原本使用的评测
@@ -61,18 +63,10 @@ We recommend rank-based or confusion-matrix measures whenever targets are mutual
 
 ---
 
-## 提交前检查
+## Note on the earlier version
 
-| 项目 | 状态 |
-|---|---|
-| 词数 ≤ 300 | 见 `reanalysis/` 里的自动计数 |
-| 无姓名 / 单位 / 链接 | ✅ 正文中没有任何可识别信息 |
-| 不放 GitHub 链接 | ✅ 未放（放了会破坏匿名） |
-| 结论可辩护 | ✅ 每一条都对应 `reanalysis/` 里的数据 |
-
-## 旧版（作废，仅留档）
-
-旧版标题为 *"Local STDP with Physical Guidance Approaches Global Linear Readout
-Performance on a Small-Scale Sensorimotor Task"*，其核心结论（STDP 达到全局读出水
-平；泛化到未见形状 0.763–0.821）经重新评测后不成立。详见 `reanalysis/REPORT.md`
-与 `reanalysis/SWEEP_REPORT.md`。
+An earlier version of this abstract carried the title *"Local STDP with Physical Guidance
+Approaches Global Linear Readout Performance on a Small-Scale Sensorimotor Task"*. Its central
+claim — that the local STDP readout matched a global linear readout, including generalization
+to unseen shapes — does not survive re-evaluation. See `reanalysis/REPORT.md` and
+`reanalysis/SWEEP_REPORT.md` for the corrected analysis.

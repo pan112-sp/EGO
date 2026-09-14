@@ -1,3 +1,25 @@
+> # ⚠️ SUPERSEDED — DO NOT CITE
+>
+> **This draft is retained for historical record only. Its central claim does not hold.**
+>
+> The claim below — that the local STDP readout "approaches global linear readout performance",
+> including generalization to unseen shapes — was based on a correlation metric that, on this
+> task, has **zero correlation with actual task competence** (across 20 hyperparameter
+> configurations, r = −0.016; the configuration the metric ranked highest was at chance level).
+>
+> Under a discriminating (confusion-matrix / rank-based) measure, the two methods are far
+> apart: local STDP readout **47%**, global ridge readout **77%**, chance **33%**.
+>
+> See [`reanalysis/REPORT.md`](reanalysis/REPORT.md),
+> [`reanalysis/SWEEP_REPORT.md`](reanalysis/SWEEP_REPORT.md), and the corrected abstract in
+> [`SNUFA_2026_abstract.md`](SNUFA_2026_abstract.md).
+>
+> ---
+>
+> **本稿仅作历史留存，请勿引用。** 其核心结论不成立：支撑该结论的评测方式在本任务上
+> 与真实任务能力**零相关**（20 组配置，r = −0.016）。换成对比式度量后，局部 STDP 读出
+> 47%，全局岭回归 77%，随机水平 33%。详见 `reanalysis/REPORT.md`。
+
 # Local STDP with Physical Guidance Approaches Global Linear Readout Performance on a Small-Scale Sensorimotor Task
 
 **Abstract**
