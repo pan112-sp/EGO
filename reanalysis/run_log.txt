@@ -1,0 +1,65 @@
+======================================================================
+  EGO 一期 重新评测
+  种子数 = 10，每形状测试步数 = 500，PSP tau = 20
+======================================================================
+
+[0] 目标本身的相似度
+
+[A] STDP 读出层（项目原样）
+  [STDP 原样] seed 0  raw_rank1=1/3  cen_rank1=2/3  raw_diag=0.880  (4s)
+  [STDP 原样] seed 1  raw_rank1=1/3  cen_rank1=1/3  raw_diag=0.863  (7s)
+  [STDP 原样] seed 2  raw_rank1=1/3  cen_rank1=1/3  raw_diag=0.885  (6s)
+  [STDP 原样] seed 3  raw_rank1=0/3  cen_rank1=1/3  raw_diag=0.847  (6s)
+  [STDP 原样] seed 4  raw_rank1=1/3  cen_rank1=1/3  raw_diag=0.827  (7s)
+  [STDP 原样] seed 5  raw_rank1=1/3  cen_rank1=2/3  raw_diag=0.849  (4s)
+  [STDP 原样] seed 6  raw_rank1=0/3  cen_rank1=1/3  raw_diag=0.901  (3s)
+  [STDP 原样] seed 7  raw_rank1=1/3  cen_rank1=1/3  raw_diag=0.843  (3s)
+  [STDP 原样] seed 8  raw_rank1=1/3  cen_rank1=1/3  raw_diag=0.876  (3s)
+  [STDP 原样] seed 9  raw_rank1=1/3  cen_rank1=1/3  raw_diag=0.877  (3s)
+
+[B] 岭回归基线
+  [岭回归] seed 0  raw_avg=0.868  raw_rank1=2/3  cen_rank1=2/3  (2s)
+  [岭回归] seed 1  raw_avg=0.857  raw_rank1=2/3  cen_rank1=1/3  (3s)
+  [岭回归] seed 2  raw_avg=0.869  raw_rank1=2/3  cen_rank1=1/3  (3s)
+  [岭回归] seed 3  raw_avg=0.879  raw_rank1=2/3  cen_rank1=3/3  (3s)
+  [岭回归] seed 4  raw_avg=0.884  raw_rank1=2/3  cen_rank1=3/3  (7s)
+  [岭回归] seed 5  raw_avg=0.874  raw_rank1=2/3  cen_rank1=3/3  (8s)
+  [岭回归] seed 6  raw_avg=0.868  raw_rank1=2/3  cen_rank1=3/3  (8s)
+  [岭回归] seed 7  raw_avg=0.876  raw_rank1=2/3  cen_rank1=3/3  (8s)
+  [岭回归] seed 8  raw_avg=0.867  raw_rank1=2/3  cen_rank1=1/3  (8s)
+  [岭回归] seed 9  raw_avg=0.893  raw_rank1=2/3  cen_rank1=3/3  (8s)
+
+[C] STDP + PSP 滤波（探索性）
+  [STDP+PSP] seed 0  raw_rank1=2/3  cen_rank1=1/3  out_out=0.299
+  [STDP+PSP] seed 1  raw_rank1=2/3  cen_rank1=2/3  out_out=0.639
+  [STDP+PSP] seed 2  raw_rank1=1/3  cen_rank1=1/3  out_out=0.704
+  [STDP+PSP] seed 3  raw_rank1=1/3  cen_rank1=1/3  out_out=0.286
+  [STDP+PSP] seed 4  raw_rank1=1/3  cen_rank1=1/3  out_out=0.483
+  [STDP+PSP] seed 5  raw_rank1=1/3  cen_rank1=1/3  out_out=0.555
+  [STDP+PSP] seed 6  raw_rank1=2/3  cen_rank1=1/3  out_out=0.368
+  [STDP+PSP] seed 7  raw_rank1=2/3  cen_rank1=1/3  out_out=0.539
+  [STDP+PSP] seed 8  raw_rank1=2/3  cen_rank1=1/3  out_out=0.459
+  [STDP+PSP] seed 9  raw_rank1=1/3  cen_rank1=1/3  out_out=0.510
+
+[D] 逐层可解码性
+  [可解码性] seed 0  visual_input     = 1.000
+  [可解码性] seed 0  reservoir_fired  = 1.000
+  [可解码性] seed 0  readout_output   = 0.800
+  [可解码性] seed 0  vocal_position_mean = 0.667
+  [可解码性] seed 0  vocal_position_traj = 0.733
+  [可解码性] seed 1  visual_input     = 1.000
+  [可解码性] seed 1  reservoir_fired  = 1.000
+  [可解码性] seed 1  readout_output   = 0.833
+  [可解码性] seed 1  vocal_position_mean = 0.500
+  [可解码性] seed 1  vocal_position_traj = 0.867
+  [可解码性] seed 2  visual_input     = 1.000
+  [可解码性] seed 2  reservoir_fired  = 1.000
+  [可解码性] seed 2  readout_output   = 0.900
+  [可解码性] seed 2  vocal_position_mean = 0.833
+  [可解码性] seed 2  vocal_position_traj = 1.000
+
+======================================================================
+  完成，用时 198 秒
+  结果: D:\EGO\reanalysis\results.json
+  报告: D:\EGO\reanalysis\REPORT.md
+======================================================================

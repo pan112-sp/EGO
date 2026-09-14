@@ -372,7 +372,26 @@ def test_free_run(reservoir, readout, vis_enc, vt, targets, shapes, test_steps=5
 #  Experiment 1: Baseline Comparison
 # ============================================================
 def exp1_baselines(seeds=list(range(10))):
-    """Compare: STDP (ours) vs RLS (FORCE) vs no-guidance vs random weights."""
+    """Compare: STDP (ours) vs RLS (FORCE) vs no-guidance vs random weights.
+
+    WARNING / 注意
+    --------------
+    The RLS baseline computed HERE is the ORIGINAL, UNFAIR version: it does
+    not PSP-filter the reservoir spikes. It scores ~0.38 with huge variance
+    and does NOT represent what RLS can achieve on this task.
+
+    The FAIR baselines used in the paper come from `rls_fixed.py`
+    (PSP-filtered, tau=20ms):
+        ridge  = 0.873 +/- 0.010
+        RLS    = 0.875 +/- 0.009
+
+    This mismatch is why running this file reproduces 0.382 while the paper
+    reports 0.875. See reanalysis/REPORT.md (section 6) for details.
+
+    此处计算的 RLS 基线是**早期不公平的版本**（未对储备池脉冲做 PSP 滤波），
+    得分约 0.38 且方差极大，不代表 RLS 在本任务上的真实水平。
+    论文采用的公平基线在 rls_fixed.py 中（PSP 滤波，0.873 / 0.875）。
+    """
     print("\n" + "="*65)
     print("  Experiment 1: Baseline Comparison")
     print("="*65)

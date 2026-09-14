@@ -12,7 +12,13 @@ import time
 import sys
 import traceback
 
-_logfile = open('rls_fix_results.txt', 'w', encoding='utf-8')
+# NOTE: only truncate the results file when run as a script.
+# Importing this module must NOT clobber rls_fix_results.txt.
+if __name__ == '__main__':
+    _logfile = open('rls_fix_results.txt', 'w', encoding='utf-8')
+else:
+    import io
+    _logfile = io.StringIO()
 
 def out(msg):
     try:

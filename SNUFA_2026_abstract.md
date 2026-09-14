@@ -1,13 +1,78 @@
-# SNUFA 2026 Abstract
+# SNUFA 2026 Abstract (corrected)
 
-- **Presentation type:** Poster
-- **Presentation title:** Local STDP with Physical Guidance Approaches Global Linear Readout Performance on a Small-Scale Sensorimotor Task
-- **Presentation authors:** Pan Haimeng
+**提交字段**
 
-## Abstract (298 words)
+- Presentation type: Poster
+- Presentation title: `When a correlation metric cannot tell learning from non-learning in a spiking sensorimotor network`
+- Presentation authors: `Pan Haimeng`
 
-How can a neural network learn to map sensory inputs to motor outputs without reward signals or gradient-based weight updates? Biological brains achieve this using local synaptic plasticity, yet most spiking neural network (SNN) learning algorithms rely on mechanisms unavailable to biological synapses: global covariance matrices (FORCE learning), external reward signals (reward-modulated STDP), or gradient backpropagation. We ask whether local synaptic weight-update rules (STDP and homeostatic plasticity), combined with teacher-forced guidance, can enable a chaotic spiking network to acquire cross-modal sensorimotor function. We constructed a network of 1000 LIF neurons with chaotic recurrent dynamics (spectral radius 5.0) and a plastic readout layer of 8 output neurons governing a mass-spring-damper vocal tract model. Synaptic weight updates used only spike-timing-dependent plasticity (STDP) and homeostatic plasticity. During training, output neurons were driven by teaching currents derived from the target vocalization trajectory, physically guiding the desired motor pattern while STDP autonomously learned which reservoir neurons correlate with the guided output. During testing, all guidance was removed; the network had to generate the correct vocalization trajectory from visual input alone. Across 10 random seeds, the method achieved a Pearson correlation of 0.865 ± 0.022 between network output and target trajectory, showing no statistically significant difference from offline ridge regression (0.873 ± 0.010; p=0.29) or online RLS/FORCE with PSP filtering (0.875 ± 0.009; p=0.21) — despite using only local synaptic information for weight updates (one scalar per synapse) versus global network state (a 1000×1000 covariance matrix). Ablation confirmed STDP as the core mechanism; removing STDP yielded systematic anti-correlation (−0.916), reflecting homeostatic-only suppression of active synapses. The network generalized to unseen shapes (held-out: 0.763–0.821) and to position-shifted (0.794) and size-scaled (0.549) variants of trained shapes. These results suggest that biologically available local weight-update rules, combined with teacher-forced guidance, can approach the performance of global linear readout methods for acquiring sensorimotor mappings, though statistical equivalence remains unestablished, without reward signals or gradient-based weight updates.  
+---
 
-## Notes
+## Abstract (English — 粘这一份进表单)
 
-300-word limit abstract for SNUFA 2026 workshop.
+We report a negative result together with a methodological caution. We trained a spiking
+network — a fixed reservoir of 1000 LIF neurons with a plastic STDP readout — to map visual
+shapes onto vocal-tract motor trajectories. Under the evaluation used in the project, the
+Pearson correlation between produced and target trajectory, the local STDP readout appeared
+statistically indistinguishable from an offline ridge-regression baseline
+(0.865 ± 0.022 vs 0.873 ± 0.010, p = 0.29).
+
+We then examined the evaluation itself. The three target trajectories are mutually correlated
+at 0.836, and the network's outputs across the three shapes are mutually correlated at 0.992.
+The score therefore sits near 0.86 regardless of whether the network actually discriminates
+shapes. Across 20 hyperparameter configurations, this metric correlated with true shape
+competence — whether the output matched its own target better than the other two — at
+r = −0.016. The configuration the metric ranked highest was at chance; the one it ranked lowest
+was the best in the sweep.
+
+A confusion-matrix / rank-based measure exposes the gap: local STDP readout 47%, global ridge
+readout 77%, chance 33%. Shape information is nevertheless present throughout the network —
+decodable at 100% from reservoir activity and 87% from the final motor output — so the failure
+is one of weak target correspondence, not of lost information.
+
+We also found an implementation confound: the STDP readout consumed instantaneous spikes while
+the baselines consumed PSP-filtered firing rates. Aligning them raised STDP from 40% to 47%,
+still short of ridge.
+
+We recommend rank-based or confusion-matrix measures whenever targets are mutually correlated.
+
+---
+
+## 中文对照（给你核对用，不要粘进表单）
+
+我们报告一个负面结果，以及一则方法学上的提醒。我们训练了一个脉冲网络——1000 个 LIF 神经元的
+固定储备池，加上一个可塑的 STDP 读出层——把视觉形状映射到声带运动轨迹。在项目原本使用的评测
+方式（产出轨迹与目标轨迹的皮尔逊相关）下，局部 STDP 读出与离线岭回归基线在统计上无法区分
+（0.865 ± 0.022 对 0.873 ± 0.010，p = 0.29）。
+
+随后我们检查了这个评测本身。三条目标轨迹彼此相关 0.836，而网络在三个形状下的输出彼此相关
+0.992。因此无论网络是否真的区分了形状，分数都停在 0.86 附近。在 20 组超参数配置上，该度量与
+真实形状能力——输出与自己那个目标的相关是否高于另外两个——的相关系数为 r = −0.016。
+该度量排名最高的配置处在随机水平；排名最低的配置反而是整个扫描中最好的。
+
+换成混淆矩阵 / 排名类度量后，差距显现：局部 STDP 读出 47%，全局岭回归读出 77%，随机水平 33%。
+尽管如此，形状信息在网络中一直存在——可从储备池活动以 100% 解码，从最终运动输出以 87% 解码
+——所以这是"目标对应关系弱"，而不是"信息丢失"。
+
+我们还发现一个实现层面的混淆：STDP 读出层消耗的是瞬时脉冲，而基线消耗的是 PSP 滤波后的放电率。
+对齐二者后，STDP 从 40% 提升到 47%，仍低于岭回归。
+
+我们建议：当多个目标彼此相关时，报告排名类或混淆矩阵类度量。
+
+---
+
+## 提交前检查
+
+| 项目 | 状态 |
+|---|---|
+| 词数 ≤ 300 | 见 `reanalysis/` 里的自动计数 |
+| 无姓名 / 单位 / 链接 | ✅ 正文中没有任何可识别信息 |
+| 不放 GitHub 链接 | ✅ 未放（放了会破坏匿名） |
+| 结论可辩护 | ✅ 每一条都对应 `reanalysis/` 里的数据 |
+
+## 旧版（作废，仅留档）
+
+旧版标题为 *"Local STDP with Physical Guidance Approaches Global Linear Readout
+Performance on a Small-Scale Sensorimotor Task"*，其核心结论（STDP 达到全局读出水
+平；泛化到未见形状 0.763–0.821）经重新评测后不成立。详见 `reanalysis/REPORT.md`
+与 `reanalysis/SWEEP_REPORT.md`。
