@@ -30,10 +30,9 @@ import time
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = r"D:\EGO"
+ROOT = os.path.dirname(HERE)          # 仓库根，自动适配（不再写死 D:\EGO）
 sys.path.insert(0, HERE)
 sys.path.insert(0, ROOT)
-os.chdir(ROOT)
 
 import rigorous_experiments as R
 from reanalyze import analyze, merge, new_acc, finalize, cc

@@ -35,11 +35,13 @@ import types
 
 import numpy as np
 
-ROOT = r"D:\EGO"
-OUT = os.path.join(ROOT, "reanalysis")
+# 路径自适配：仓库根 = 本文件所在目录的上一级（不再写死 D:\EGO）
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(HERE)
+OUT = HERE
 os.makedirs(OUT, exist_ok=True)
 sys.path.insert(0, ROOT)
-os.chdir(ROOT)
+sys.path.insert(0, HERE)
 
 NSEED = 10
 TAU_PSP = 20.0          # 岭回归/RLS 使用的 PSP 时间常数（也是论文最优值）

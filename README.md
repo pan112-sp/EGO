@@ -55,29 +55,54 @@ rank-based measure, not the correlation with a single target.
 ## Repository layout
 
 ```
-reanalysis/          <- the main contribution: re-evaluation + sweep
+EVIDENCE.md          every number on the poster -> file + exact value
+poster.pdf           the SNUFA 2026 poster
+note/                note_en.md, note_cn.md (write-ups)
+reanalysis/          <- the main contribution: re-evaluation + controls
   reanalyze.py         contrastive metrics, layer-wise decodability   (~215 s)
   sweep_psp.py         PSP fairness + parameter sweep                 (~450 s)
+  lazy_network.py      "lazy" baseline: same output for every shape
+  control_ridge_spikes.py   ridge on the same instantaneous spikes STDP sees
+  control_ridge_nonneg.py   non-negative ridge (NNLS), same spikes
   report_only.py       regenerate REPORT.md from results.json
   results.json         all numbers from reanalyze.py
   REPORT.md            full report (Chinese)
   SWEEP_REPORT.md      sweep report (Chinese)
-force_phase3.py      earlier fixed-reservoir code
+force_phase3.py      earlier fixed-reservoir code (not needed for the results above)
 rigorous_experiments.py   experiments (see the WARNING in exp1_baselines)
 rls_fixed.py         ridge / RLS baselines (fair, PSP-filtered)
 rls_fix_results.txt  baseline logs
+test_improvements.py legacy experiment script (not needed for the results above)
+reanalyze.py         legacy copy — use reanalysis/reanalyze.py instead
 SNUFA_2026_abstract.md    workshop abstract (corrected version)
 ```
 
 ## Reproduce
 
+Requirements: Python 3.10+, `numpy`, `scipy` (`pip install -r requirements.txt`).
+Paths are detected from the repository root, so a fresh clone runs anywhere (nothing is hard-coded).
+
 ```bash
-pip install -r requirements.txt
-python -B reanalysis/reanalyze.py      # ~4 min
-python -B reanalysis/sweep_psp.py      # ~8 min
+python -X utf8 -B reanalysis/reanalyze.py      # ~4 min
+python -X utf8 -B reanalysis/sweep_psp.py      # ~8 min
 ```
 
-Both write their results into `reanalysis/`.
+`-X utf8` only matters on Windows (it keeps Chinese console output readable); it is harmless elsewhere.
+
+| script | writes |
+|---|---|
+| `reanalysis/reanalyze.py` | `results.json`, `REPORT.md`, `run_log.txt` |
+| `reanalysis/sweep_psp.py` | `sweep_psp.json`, `sweep_log.txt` |
+
+Three controls (each ~1 min), which produce the numbers used on the poster:
+
+```bash
+python -X utf8 -B reanalysis/lazy_network.py          # "lazy" network: 0.902 on the old score, chance on rank-1
+python -X utf8 -B reanalysis/control_ridge_spikes.py  # ridge on the SAME instantaneous spikes: 100%
+python -X utf8 -B reanalysis/control_ridge_nonneg.py  # non-negative ridge (NNLS): 100%
+```
+
+Every number quoted in `EVIDENCE.md` maps to one of these outputs.
 
 ## Limitations
 
@@ -157,10 +182,20 @@ SNUFA_2026_abstract.md   投稿摘要（修正版）
 
 ## 复现
 
+要求：Python 3.10+，`numpy`、`scipy`（`pip install -r requirements.txt`）。
+路径从仓库根自动识别，**没有写死任何本地盘符**，克隆到任何机器都能跑。
+
 ```bash
-pip install -r requirements.txt
-python -B reanalysis/reanalyze.py      # 约 4 分钟
-python -B reanalysis/sweep_psp.py      # 约 8 分钟
+python -X utf8 -B reanalysis/reanalyze.py      # 约 4 分钟
+python -X utf8 -B reanalysis/sweep_psp.py      # 约 8 分钟
+```
+
+三个对照（各约 1 分钟），海报上的数字都来自它们：
+
+```bash
+python -X utf8 -B reanalysis/lazy_network.py          # 偷懒网络：旧分数 0.902，rank-1 瞎猜
+python -X utf8 -B reanalysis/control_ridge_spikes.py  # 岭回归读同样的瞬时脉冲：100%
+python -X utf8 -B reanalysis/control_ridge_nonneg.py  # 非负岭回归（NNLS）：100%
 ```
 
 ## 局限

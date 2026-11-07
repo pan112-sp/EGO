@@ -1,3 +1,4 @@
+# 注意：这是旧版脚本，保留仅为兼容；请使用 reanalysis/reanalyze.py
 # -*- coding: utf-8 -*-
 """
 EGO 一期 重新评测 (Re-analysis)
@@ -35,11 +36,13 @@ import types
 
 import numpy as np
 
-ROOT = r"D:\EGO"
+# 路径自适配（旧版脚本，建议用 reanalysis/reanalyze.py）
+HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = HERE
 OUT = os.path.join(ROOT, "reanalysis")
 os.makedirs(OUT, exist_ok=True)
 sys.path.insert(0, ROOT)
-os.chdir(ROOT)
+sys.path.insert(0, OUT)
 
 NSEED = 10
 TAU_PSP = 20.0          # 岭回归/RLS 使用的 PSP 时间常数（也是论文最优值）
